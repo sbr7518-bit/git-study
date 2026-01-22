@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item id="NodeList/MySQLTable">
+		<column name="테이블명" visible="true" order="0" width="117"/>
+		<column name="Engine" visible="true" order="1" width="100"/>
+		<column name="Auto Increment" visible="true" order="2" width="100"/>
+		<column name="Data Length" visible="true" order="3" width="100"/>
+		<column name="Partitioned" visible="true" order="4" width="100"/>
+		<column name="Description" visible="true" order="5" width="100"/>
+	</item>
+	<item id="NodeList/MySQLTableColumn">
+		<column name="컬럼명" visible="true" order="0" width="206"/>
+		<column name="#" visible="true" order="1" width="100"/>
+		<column name="Data Type" visible="true" order="2" width="100"/>
+		<column name="Not Null" visible="true" order="3" width="100"/>
+		<column name="Auto Increment" visible="true" order="4" width="100"/>
+		<column name="Key" visible="true" order="5" width="100"/>
+		<column name="디폴트" visible="true" order="6" width="100"/>
+		<column name="Extra" visible="true" order="7" width="100"/>
+		<column name="Expression" visible="true" order="8" width="100"/>
+		<column name="Comment" visible="true" order="9" width="100"/>
+	</item>
+	<item id="PrefPageConfirmationsEditor">
+		<column name="Confirmation" visible="true" order="0" width="418"/>
+		<column name="Show dialog" visible="true" order="1" width="231"/>
+		<column name="Confirm" visible="true" order="2" width="208"/>
+		<column name="Group" visible="true" order="3" width="252"/>
+	</item>
+	<item id="PrefPageNotifications">
+		<column name="Notification name" visible="true" order="0" width="491"/>
+		<column name="Notification sound" visible="true" order="1" width="325"/>
+		<column name="Show popup" visible="true" order="2" width="294"/>
+	</item>
+	<item id="Suggestion/NodeList/MySQLTableColumn">
+		<column name="컬럼명" visible="true" order="0" width="130"/>
+		<column name="#" visible="true" order="1" width="53"/>
+		<column name="Data Type" visible="true" order="2" width="101"/>
+		<column name="Not Null" visible="false" order="3" width="100"/>
+		<column name="Auto Increment" visible="false" order="4" width="100"/>
+		<column name="Key" visible="false" order="5" width="100"/>
+		<column name="디폴트" visible="false" order="6" width="100"/>
+		<column name="Extra" visible="false" order="7" width="100"/>
+		<column name="Expression" visible="false" order="8" width="100"/>
+		<column name="Comment" visible="true" order="3" width="94"/>
+	</item>
+	<item id="scriptSelectorViewer">
+		<column name="Script" visible="true" order="0" width="185"/>
+		<column name="Time" visible="true" order="1" width="181"/>
+		<column name="Info" visible="true" order="2" width="66"/>
+		<column name="Folder" visible="true" order="3" width="78"/>
+	</item>
+</items>

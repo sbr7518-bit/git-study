@@ -1,0 +1,9 @@
+dialog.default.folder=C\:\\study\\2. Datanbase\\General\\Scripts
+driver.selector.orderBy=score
+eclipse.preferences.version=1
+org.jkiss.dbeaver.core.confirm.drop_sql=always
+resultset.presentation.active=spreadsheet
+sample.database.canceled=true
+sql.format.keywordCase=UPPER
+tipOfTheDayInitializer.notFirstRun=true
+ui.auto.update.check.time=1769043505131

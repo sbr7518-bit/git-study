@@ -1,172 +1,139 @@
--- employees라는 데이터베이스 선택 (use 데이터베이스명;)
-use employees;
+CREATE TABLE member_notnull (
+	id varchar(50) NOT NULL,
+	pwd varchar(250) NOT NULL,	
+	name varchar(50),	
+	age int,
+	in_date datetime
+	);
 
--- <Select>
-select * from employees;  
--- ctrl + enter 치기 -> 밑에 창에 테이블이 생성됨, * 입력시엔 모든 컬럼이 불러와진다.
--- * : 불필요한 컬럼도 불러와지기 때문에 권장하진 않는다.
-
-
-select emp_no, birth_date from employees;
-select hire_date from employees;
-select emp_no, from_date, to_date from dept_manager;
-select * from departments;
-
-select emp_no  from employees;
-
---------------------------------------------------------------------------------------
--- <Insert>
-insert into employees
-values (1,
-		'2000-01-01',
-		'jaeseop',	
-		'kim',
-		'm',
-		now());
--- now : 현재 날짜를 나타낸다. ex. 작성하면 hire_date에 2026-01-21 (현재날짜)가 생성됨
--- 이 문장 전체가 문법 하나임. 그래서 employees 뒤로 ;가 오지 않는다.
-select * from employees;
-
-INSERT INTO departments
-VALUES ("d010",
-		"Korea IT Department");
-
-INSERT INTO employees
-VALUES (2,
-		'2002-01-01',
-		'Bora',
-		'Shin',
-		'f',
-		now());
-
-INSERT INTO dept_emp
-VALUES (1,
-		'd010',
-		now(),
- 		'9999-01-01'); 
-
-SELECT * FROM departments;
-SELECT * FROM employees;
-SELECT * FROM dept_emp;
+INSERT INTO member_notnull
+VALUES('test', 'qwer1234!', null ,null, now());
 
 
-------------------------------------------------------------------
--- <Update>  - where 조건 필요
+-- 내가 넣고 싶은 칼럼들만! <안 적힌 애들은 null로 자동으로 들어간다> 칼럼들이 10개 이상 몰려있는데 값들이 섞여있을때 사용
 
-UPDATE employees
-SET first_name = '길동'
-WHERE emp_no = 10001;
-
-SELECT * FROM employees;
-
-UPDATE employees
-SET last_name = '홍',
-	hire_date = NOW() 
-WHERE emp_no = 10001;
-
-SELECT * FROM employees;
+INSERT INTO member_notnull (id, pwd, in_date)
+VALUES ('test2', 'qwer1234', now()); 
 
 
-UPDATE departments
-SET dept_name = 'Tech Sales'
-WHERE dept_no = 'd007';
+SELECT * FROM member_notnull;
 
-SELECT * FROM departments;
 
-SELECT * FROM employees;
+############################################################################
 
-UPDATE employees
-SET birth_date = '1977-07-07' 
-WHERE last_name = 'Erie';
-
-SELECT * FROM employees
-WHERE last_name = 'Erie';
-
-------------------------------------------------------------
--- <Delete> - where 조건 필요
-
-DELETE FROM employees 
-WHERE emp_no = 10005; 
-
-SELECT * FROM employees; 
-
-DELETE FROM employees 
-WHERE hire_date = '1993-05-12';
-
-SELECT * FROM employees
-WHERE hire_date = '1993-05-12';
-
-SELECT * FROM employees
-WHERE emp_no = 28847;
-
-DELETE FROM employees
-WHERE emp_no = 28847;
-
-SELECT * FROM employees
-WHERE emp_no = 28847;
-
-----------------------------------------------------------------------
--- <Create>
-
-CREATE TABLE test_member (
-	member_id varchar(50) comment '아이디',
-	member_pwd varchar(255) comment '비번',
-	member_name varchar(50) comment '이름',
-	member_age TINYINT comment '나이',
-	member_in_date datetime comment '가입일'
+CREATE TABLE member_unique (
+	id varchar(50) NOT NULL UNIQUE, 
+	pwd varchar(250) NOT NULL 
 );
--- <comment : 개발자를 위한 설명 or 메모 내용> 
 
--- <Drop Table : 테이블 삭제>
-DROP TABLE test_member;
-
+INSERT INTO member_unique VALUES('test', 'qwer1234!');
+INSERT INTO member_unique VALUES('test', 'qwer1234!');
 
 
-CREATE TABLE free_board (
-	board_no iNT comment '게시판 번호',
-	board_title varchar(100) comment '게시판 제목',
-	board_content text comment '게시판 내용',
-	board_date datetime comment '게시판 작성일',
-	board_views int comment '게시판 조회수'
-);  
+----------------------------------------------------------------------------------------
+
+CREATE TABLE member_check(
+	gender varchar(1) CHECK (gender IN('W','M'))
+);
+
+INSERT INTO member_check VALUES('W');
+INSERT INTO member_check VALUES('w');
+INSERT INTO member_check VALUES('asdasd');
+
+SELECT * FROM member_check;
+
+
+--------------------------------------------------------------------------------
+-- current_timestamp <now는 MySQL 최신 버전에서만 가능. 다른 곳에선 실행 안 될 수 있음)
+
+CREATE TABLE member_default (
+	id varchar(50),
+	in_date datetime DEFAULT now()
+);
+
+INSERT INTO  member_default(id)	VALUES('test');
+SELECT * FROM member_default;
+
+
+---------------------------------------------------------------------------------
+-- auto_increment : 자동생성  -> 애초에 값을 넣지 않거나 null을 넣으면 자동으로 값이 증가된다
+
+
+CREATE TABLE member_pk (
+	member_pk_id int PRIMARY KEY AUTO_INCREMENT,
+	id varchar(50)
+);
+
+DROP TABLE member_pk;
+
+-- 첫번째 방법
+INSERT INTO member_pk VALUES(null, 'test');
+
+-- 두번째 방법 (직접 객체를 지정해서 값만 넣기)
+INSERT INTO member_pk(id) VALUES('test');
  
+SELECT * FROM member_pk;
 
-INSERT INTO free_board
-VALUES (1,
-		'과일이름쓰기',
-		'수박',
-		now(),
-		1
-		); 
-  
-SELECT * FROM free_board;
 
-DELETE FROM free_board
-WHERE board_no = 1;
+---------------------------------------------------------------------------------
+-- 참조할 테이블 먼저 작성. 
+-- writer (대충 작성자라는 뜻)
 
-SELECT * FROM free_board;
 
-INSERT INTO free_board
-VALUES (1,
-		'과일이름쓰기',
-		'수박',
-		now(),
-		1
-		); 
-  
-SELECT * FROM free_board;
 
-UPDATE free_board
-SET board_title = '과일'
-WHERE board_no = 1;
+CREATE TABLE member_primary(
+	member_primary_id int PRIMARY KEY AUTO_INCREMENT,
+	id varchar(50)
+);
 
-SELECT * FROM free_board;
+CREATE TABLE board_foreign(
+	board_foreign_id int PRIMARY KEY AUTO_INCREMENT,
+	title varchar(300),
+	writer_id int REFERENCES member_primary(member_primary_id)
+);
 
-DELETE FROM free_board;
+INSERT INTO member_primary(id)
+VALUES('test1'),
+	  ('test2'),
+	  ('test3');
+
+SELECT * FROM member_primary;
+
+INSERT INTO board_foreign(title, writer_id) VALUES('게시글 제목!!', 1);
+
+SELECT * FROM board_foreign;
+
+DROP TABLE member_primary;
+
+-- SET NULL 자식테이블 참조 삭제
+ CREATE TABLE board_foreign(
+	board_foreign_id int PRIMARY KEY AUTO_INCREMENT, 
+	title varchar(300),
+	writer_id int,
+	CONSTRAINT fk_wriker FOREIGN KEY (writer_id) 
+	REFERENCES member_primary(member_primary_id)
+-- 	              참조테이블         참조할 컬럼명
+	ON DELETE SET NULL  
+);
+
+-- CASCADE 부모테이블 참조 뿐만아니라 자식 테이블 참조도 삭제한다
+CREATE TABLE board_foreign(
+	board_foreign_id int PRIMARY KEY AUTO_INCREMENT, 
+	title varchar(300),
+	writer_id int,
+	CONSTRAINT fk_wriker FOREIGN KEY (writer_id) 
+	REFERENCES member_primary(member_primary_id)
+-- 	              참조테이블         참조할 컬럼명
+	ON DELETE CASCADE
+	);
+
+DROP TABLE board_foreign;
+
+
+DELETE FROM member_primary
+WHERE member_primary_id = 1;
+
 
  
-
-
-
 
 

@@ -1,0 +1,209 @@
+-- employees라는 데이터베이스 선택 (use 데이터베이스명;)
+use employees;
+
+-- <Select>
+select * from employees;  
+-- ctrl + enter 치기 -> 밑에 창에 테이블이 생성됨, * 입력시엔 모든 컬럼이 불러와진다.
+-- * : 불필요한 컬럼도 불러와지기 때문에 권장하진 않는다.
+
+
+select emp_no, birth_date from employees;
+select hire_date from employees;
+select emp_no, from_date, to_date from dept_manager;
+select * from departments;
+
+select emp_no  from employees;
+
+--------------------------------------------------------------------------------------
+-- <Insert>
+insert into employees
+values (1,
+		'2000-01-01',
+		'jaeseop',	
+		'kim',
+		'm',
+		now());
+-- now : 현재 날짜를 나타낸다. ex. 작성하면 hire_date에 2026-01-21 (현재날짜)가 생성됨
+-- 이 문장 전체가 문법 하나임. 그래서 employees 뒤로 ;가 오지 않는다.
+select * from employees;
+
+INSERT INTO departments
+VALUES ("d010",
+		"Korea IT Department");
+
+INSERT INTO employees
+VALUES (2,
+		'2002-01-01',
+		'Bora',
+		'Shin',
+		'f',
+		now());
+
+INSERT INTO dept_emp
+VALUES (1,
+		'd010',
+		now(),
+ 		'9999-01-01'); 
+
+SELECT * FROM departments;
+SELECT * FROM employees;
+SELECT * FROM dept_emp;
+
+
+------------------------------------------------------------------
+-- <Update>  - where 조건 필요
+
+UPDATE employees
+SET first_name = '길동'
+WHERE emp_no = 10001;
+
+SELECT * FROM employees;
+
+UPDATE employees
+SET last_name = '홍',
+	hire_date = NOW() 
+WHERE emp_no = 10001;
+
+SELECT * FROM employees;
+
+
+UPDATE departments
+SET dept_name = 'Tech Sales'
+WHERE dept_no = 'd007';
+
+SELECT * FROM departments;
+
+SELECT * FROM employees;
+
+UPDATE employees
+SET birth_date = '1977-07-07' 
+WHERE last_name = 'Erie';
+
+SELECT * FROM employees
+WHERE last_name = 'Erie';
+
+------------------------------------------------------------
+-- <Delete> - where 조건 필요
+
+DELETE FROM employees 
+WHERE emp_no = 10005; 
+
+SELECT * FROM employees; 
+
+DELETE FROM employees 
+WHERE hire_date = '1993-05-12';
+
+SELECT * FROM employees
+WHERE hire_date = '1993-05-12';
+
+SELECT * FROM employees
+WHERE emp_no = 28847;
+
+DELETE FROM employees
+WHERE emp_no = 28847;
+
+SELECT * FROM employees
+WHERE emp_no = 28847;
+
+----------------------------------------------------------------------
+-- <Create>
+
+CREATE TABLE test_member (
+	member_id varchar(50) comment '아이디',
+	member_pwd varchar(255) comment '비번',
+	member_name varchar(50) comment '이름',
+	member_age TINYINT comment '나이',
+	member_in_date datetime comment '가입일'
+);
+-- <comment : 개발자를 위한 설명 or 메모 내용> 
+
+-- <Drop Table : 테이블 삭제>
+DROP TABLE test_member;
+
+
+
+CREATE TABLE free_board (
+	board_no iNT comment '게시판 번호',
+	board_title varchar(100) comment '게시판 제목',
+	board_content text comment '게시판 내용',
+	board_date datetime comment '게시판 작성일',
+	board_views int comment '게시판 조회수'
+);  
+ 
+
+INSERT INTO free_board
+VALUES (1,
+		'과일이름쓰기',
+		'수박',
+		now(),
+		1
+		); 
+  
+SELECT * FROM free_board;
+
+DELETE FROM free_board
+WHERE board_no = 1;
+
+SELECT * FROM free_board;
+
+UPDATE free_board
+SET board_title = '과일'
+WHERE board_no = 1;
+
+SELECT * FROM free_board;
+
+DELETE FROM free_board;
+
+----------------------------------------------
+-- <Alter> 
+
+CREATE TABLE ddl_alter_test (
+	alter_id varchar(255),
+	alter_name varchar(255),
+	alter_as varchar(255)
+);
+
+-- 테이블 이름 변경 (RENAME TO)
+ALTER TABLE ddl_alter_test RENAME TO ddl_alter;
+
+-- 테이블 구조 변경 (컬럼 변경) -> 여러 개를 한번에 변경 가능.
+ALTER TABLE ddl_alter   
+ MODIFY alter_id varchar(100),
+ MODIFY alter_name varchar(100),
+ MODIFY alter_as varchar(100);
+
+SELECT * FROM ddl_alter;
+
+-- 테이블 구조 변경 (컬럼 추가) -> ADD
+ALTER TABLE ddl_alter 
+ ADD alter_pwd varchar(255);
+
+-- 테이블 구조 변경 (컬럼 삭제) -> DROP (column은 생략가능, 보통 컬럼 수정이 더 많음)
+ALTER TABLE ddl_alter DROP COLUMN alter_as;
+
+
+-- UNIQUE : 조건식으로 값이 무조건 들어있다는 설정으로 만드는 것
+
+ALTER TABLE ddl_alter 
+ ADD CONSTRAINT alter_name_unique UNIQUE(alter_name);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
