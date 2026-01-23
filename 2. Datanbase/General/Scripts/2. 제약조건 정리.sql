@@ -40,7 +40,7 @@
     content text NOT NULL,
     views int NOT NULL DEFAULT,
     delete_status varchar(1) NOT NULL DEFAULT 'N'
-                             CHECK (delete_status IN('Y','N')),
+                             CHECK (delete_status IN('Y','N'),
     member_id int,
     CONSTRAINT fk_member_id FOREIGN key(member_id)
     REFERENCES member(member_id)

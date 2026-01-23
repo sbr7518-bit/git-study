@@ -1,0 +1,116 @@
+SELECT * FROM employees;
+
+SELECT * FROM employees
+WHERE gender = 'M';
+
+SELECT * FROM employees
+WHERE hire_date >= '1990-01-01';
+
+SELECT * FROM employees
+WHERE first_name = 'Georgi';
+
+SELECT * FROM employees
+WHERE emp_no  = 10010;
+
+SELECT * FROM departments;
+
+SELECT * FROM departments;
+WHERE dept_name = 'Tech Sales';
+
+-----------------------------------------
+
+INSERT INTO departments
+VALUES ('d011','AI Research');
+
+INSERT INTO employees
+VALUES ('999001',
+        now(),
+        'Jaeseop',
+        'Kim',
+        'M',
+        '2026-01-01'
+);
+SELECT * FROM employees
+WHERE emp_no = 499001;
+
+
+SELECT * FROM titles;
+WHERE emp_no = 499001;
+
+INSERT INTO titles
+VALUES (1, 'Engineer', now(), NULL);
+
+
+UPDATE titles
+SET title = 'Engineer',
+	to_date = null
+WHERE emp_no = 10001;
+
+SELECT * FROM salaries
+WHERE salary = 65000;
+
+UPDATE salaries
+SET title = 'Engineer',
+	to_date = null
+WHERE emp_no = 10001;
+
+INSERT INTO salaries
+VALUES ('499001',
+        '60000',
+        '2026-01-01',
+        '9999-01-01'       
+);
+
+SELECT * FROM salaries
+WHERE salary = '60000';
+
+UPDATE salaries
+SET salary = 65000
+WHERE emp_no = 499001;
+
+SELECT * FROM salaries;
+WHERE emp_no  = 10013;
+
+SELECT * FROM employees
+WHERE emp_no  = 10013;
+
+UPDATE employees
+SET gender = 'F'
+WHERE emp_no = 499001;
+
+SELECT * FROM titles;
+
+UPDATE titles
+SET title = 'Senior Engineer'
+WHERE emp_no = 499001;
+
+
+DELETE FROM employees
+WHERE emp_no = 10013;
+
+SELECT * FROM employees
+WHERE emp_no = 10013;
+
+SELECT * FROM titles
+WHERE emp_no < 10012
+AND title = 'Engineer';
+
+
+
+
+--------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

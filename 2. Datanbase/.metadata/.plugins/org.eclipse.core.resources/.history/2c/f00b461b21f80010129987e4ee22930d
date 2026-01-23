@@ -1,0 +1,315 @@
+[DML문제]
+
+SELECT * FROM employees;
+
+SELECT * FROM employees
+WHERE gender = 'M';
+
+SELECT * FROM employees
+WHERE hire_date >= '1990-01-01';
+
+SELECT * FROM employees
+WHERE first_name = 'Georgi';
+
+SELECT * FROM employees
+WHERE emp_no  = 10010;
+
+SELECT * FROM departments;
+
+SELECT * FROM departments;
+WHERE dept_name = 'Tech Sales';
+
+-----------------------------------------
+
+[DDL문제]
+
+INSERT INTO departments
+VALUES ('d011','AI Research');
+
+INSERT INTO employees
+VALUES ('999001',
+        now(),
+        'Jaeseop',
+        'Kim',
+        'M',
+        '2026-01-01'
+);
+SELECT * FROM employees
+WHERE emp_no = 499001;
+
+
+SELECT * FROM titles
+WHERE emp_no = 499001;
+
+INSERT INTO titles
+VALUES (1, 'Engineer', now(), NULL);
+
+
+UPDATE titles
+SET title = 'Engineer',
+	to_date = null
+WHERE emp_no = 10001;
+
+SELECT * FROM salaries
+WHERE salary = 65000;
+
+UPDATE salaries
+SET title = 'Engineer',
+	to_date = null
+WHERE emp_no = 10001;
+
+INSERT INTO salaries
+VALUES ('499001',
+        '60000',
+        '2026-01-01',
+        '9999-01-01'       
+);
+
+SELECT * FROM salaries
+WHERE salary = '60000';
+
+UPDATE salaries
+SET salary = 65000
+WHERE emp_no = 499001;
+
+SELECT * FROM salaries;
+WHERE emp_no  = 10013;
+
+SELECT * FROM employees
+WHERE emp_no  = 10013;
+
+UPDATE employees
+SET gender = 'F'
+WHERE emp_no = 499001;
+
+SELECT * FROM titles;
+
+UPDATE titles
+SET title = 'Senior Engineer'
+WHERE emp_no = 499001;
+
+
+DELETE FROM employees
+WHERE emp_no = 10013;
+
+SELECT * FROM employees
+WHERE emp_no = 10013;
+
+SELECT * FROM titles
+WHERE emp_no < 10012
+AND title = 'Engineer';
+
+
+--------------------------------------
+[SELECT 문제]
+Q1~Q3 ################################
+
+SELECT *FROM salaries;
+
+SELECT salary + 1000 AS '1000을 더한 값' FROM salaries;
+SELECT salary *0.9 AS '실수령액' FROM salaries;
+SELECT salary /12 AS '월급' FROM salaries;
+
+Q4~Q9#######################################
+
+SELECT *FROM employees;
+SELECT DISTINCT gender FROM employees;
+
+SELECT * FROM titles;
+SELECT DISTINCT title FROM titles;
+
+SELECT * FROM employees
+WHERE emp_no = '10006';
+
+SELECT *FROM salaries
+WHERE salary > '60000';
+
+SELECT * FROM employees
+WHERE hire_date < '1995-01-01';
+
+SELECT * FROM employees
+WHERE gender = 'F';
+
+Q10~Q15 #################################
+
+SELECT * FROM dept_emp;
+SELECT * FROM dept_emp
+WHERE dept_no = 'd005';
+
+SELECT * FROM salaries
+WHERE salary BETWEEN 60000 AND 80000;
+
+SELECT * FROM employees
+WHERE gender = 'M'
+AND hire_date < '1990-01-01';
+
+SELECT * FROM dept_emp
+WHERE dept_no = 'd001'
+AND to_date = '9999-01-01';
+-- 현재 재직중이라고 한다면 [to_date = '9999-01-01']로 작성 → employees 샘플 DB 기준으로 현재 재직 중인 사원
+
+SELECT * FROM salaries;
+
+SELECT * FROM salaries
+WHERE salary < 40000
+OR salary > 100000;
+
+Q16~Q21 ##############################################
+
+SELECT * FROM employees
+WHERE gender = 'F'
+AND hire_date > '1995-01-01';
+
+SELECT * FROM salaries;
+
+SELECT * FROM  salaries
+WHERE salary BETWEEN 50000 AND 70000;
+
+SELECT * FROM employees
+WHERE hire_date BETWEEN '1990-01-01' AND '1995-12-31';
+
+SELECT * FROM employees
+WHERE emp_no BETWEEN 10010 AND 10020;
+
+SELECT * FROM  salaries
+WHERE salary BETWEEN 80000 AND 100000;
+
+SELECT * FROM  dept_emp
+WHERE dept_no BETWEEN 'd003' AND 'd006';
+
+
+Q22~Q29 #################################################
+
+SELECT * FROM  employees
+WHERE first_name LIKE 'A%';
+
+SELECT * FROM  employees
+WHERE first_name LIKE '%n';
+
+SELECT * FROM  employees
+WHERE first_name LIKE '%an%';
+
+SELECT * FROM  employees
+WHERE first_name LIKE '%an%';
+
+SELECT * FROM  employees
+WHERE first_name LIKE '%_____%';
+
+SELECT * FROM  employees
+WHERE last_name LIKE '%son%';
+
+SELECT * FROM titles
+WHERE to_date IS NULL;
+
+SELECT * FROM dept_emp
+WHERE dept_no IN ('d001', 'd003','d005');
+
+SELECT * FROM  employees
+WHERE emp_no IN ('10001', '10004','10010');
+
+Q30 #########################################################
+
+SELECT * FROM departments
+WHERE dept_name IN ('Sales','Development');
+
+SELECT * FROM departments;
+------------------------------------------------------------
+INSERT INTO departments
+VALUES ("d012", "Sales");
+
+DELETE FROM departments 
+WHERE dept_no = 'd012'; 
+
+--------------------------------------------------------------
+[문제]
+
+Q1~Q5 ##################################
+
+SELECT * FROM employees;
+
+SELECT * FROM employees
+ORDER BY emp_no;
+SELECT * FROM employees
+ORDER BY emp_no DESC;
+
+SELECT * FROM salaries
+ORDER BY salary DESC;
+
+SELECT * FROM employees
+ORDER BY hire_date; 
+
+SELECT * FROM employees
+ORDER BY gender ASC, emp_no ASC;
+
+Q6~Q ##################################
+
+SELECT * FROM employees;
+SELECT * FROM salaries;
+SELECT * FROM dept_emp;
+SELECT * FROM titles;
+
+SELECT max(salary) FROM salaries;
+SELECT min(salary) FROM salaries;
+SELECT avg(salary) FROM salaries;
+SELECT sum(salary) FROM salaries;
+SELECT count(*) FROM employees;
+
+SELECT count(*), gender FROM employees
+GROUP BY gender;
+
+SELECT count(*), dept_no FROM dept_emp
+GROUP BY dept_no;
+
+SELECT count(*), title FROM titles
+GROUP BY  title;
+
+SELECT emp_no, avg(salary) AS '평균 급여' FROM salaries
+GROUP BY emp_no;
+
+
+Q15~Q20 ###############################################
+
+SELECT * FROM employees;
+SELECT count(*), hire_date FROM employees
+GROUP BY hire_date;
+
+SELECT count(*), gender FROM employees
+WHERE emp_no > 100000
+GROUP BY gender;
+
+SELECT * FROM dept_emp;
+SELECT count(*), dept_no FROM dept_emp
+GROUP BY dept_no
+HAVING count(*) >= 20000;
+
+SELECT * FROM titles;
+SELECT count(*), title FROM titles
+WHERE emp_no >= 50000
+GROUP BY title;
+
+SELECT * FROM salaries;
+
+SELECT emp_no, avg(salary) FROM salaries
+GROUP BY emp_no
+HAVING avg(salary) >= 80000; 
+
+
+SELECT * FROM employees;
+
+SELECT count(*), YEAR(hire_date) FROM employees
+GROUP BY YEAR(hire_date)
+HAVING count(*) >= 10000;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
