@@ -79,7 +79,7 @@ WHERE to_date IS NULL;
 
 -- IN : 여러개의 값을 한번에 조회하고 싶을때
 SELECT * FROM departments
-WHERE dept_no IN ('d005', 'd009');
+WHERE dept_no IN ('d005', 'd009','d004');
 
 
 

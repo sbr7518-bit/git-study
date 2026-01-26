@@ -32,6 +32,7 @@ WHERE (first_name, last_name) = (SELECT first_name, last_name
 	
 -- 직원중에서 emp_no가 가장 높은 직원 찾기
 SELECT * FROM employees;
+
 SELECT max(emp_no) FROM employees;
 
 SELECT first_name, last_name FROM employees
@@ -50,7 +51,7 @@ LIMIT 1;
 -- 간편하게 작성
 SELECT first_name, last_name
 FROM employees
-ORDER BY emp_no DESC 
+ORDER BY emp_no DESC
 LIMIT 1;
 
 
@@ -60,8 +61,9 @@ FROM employees
 WHERE hire_date = 
 (SELECT min(hire_date) FROM employees);
 
--- 전체 평균보다 높은 연봉을 받는 이름 조회
 
+-- 단일행 서브쿼리
+-- 전체 평균보다 높은 연봉을 받는 이름 조회
 SELECT * FROM salaries s, employees e;
 
 SELECT first_name, last_name 
@@ -92,6 +94,118 @@ FROM salaries
 WHERE salary IN (SELECT salary
 				 FROM salaries s
 				 ORDER BY salary DESC);
+
+-- 다중열 다중행
+
+SELECT *
+FROM salaries s; 
+WHERE (emp_no, salary) IN (SELECT emp_no, max(salary)
+			               FROM salaries s
+				           GROUP BY emp_no);
+
+SELECT *FROM titles;
+
+SELECT emp_no, title, to_date 
+FROM titles
+WHERE(emp_no, to_date) IN 
+							(SELECT emp_no, max(to_date)
+							 FROM titles
+							 GROUP BY emp_no);
+
+
+-- 사번별로 to_date가 가장 높은 데이터를 조회
+SELECT emp_no, salary, to_date
+FROM salaries s 
+WHERE (emp_no, to_date) IN (SELECT emp_no, max(to_date)
+							FROM salaries s
+							GROUP BY emp_no);
+
+
+
+SELECT * FROM dept_emp;
+
+-- 부서별 사원의 첫 입사일 조회하기
+SELECT emp_no, dept_no, from_date
+FROM dept_emp
+WHERE (emp_no, from_date) IN 
+(SELECT emp_no, min(from_date)
+FROM dept_emp
+GROUP BY emp_no);
+
+
+-- 첫 입사한 사원을 부서별로 조회하세요.
+SELECT emp_no, dept_no, from_date
+FROM dept_emp
+WHERE (dept_no, from_date) IN 
+(SELECT dept_no, min(from_date)
+FROM dept_emp
+GROUP BY dept_no);
+
+
+
+-------- 인라인 뷰 (실행 결과값을 테이블처럼 사용)-----------
+
+SELECT * FROM (SELECT de.dept_no, avg(s.salary) 
+				FROM dept_emp de 
+				JOIN salaries s ON de.emp_no = s.emp_no 
+				GROUP BY de.dept_no) a;
+
+
+-- 별칭(AS increment_salary)에 조건을 넣고 싶을 때 
+SELECT * FROM 
+(SELECT emp_no, salary, salary*1.1 AS increment_salary FROM salaries
+ORDER BY increment_salary DESC 
+LIMIT 3) a
+WHERE increment_salary >= 170000;
+-- * 필터링을 하고 나서 조건을 붙이는 게 성능이 더 좋다 * --
+
+-- dept_no, 평균 연봉(salary)을 조회 (인라인뷰)
+-- 메인쿼리에서 평균 연봉이 70000 이상인 부서만 조회
+
+SELECT * FROM dept_emp;
+SELECT * FROM salaries;
+SELECT * FROM employees;
+
+-- 별칭을 만들어야 하는 이유 : avg가 함수이기 때문에 where에 함수명을 넣을 수 없음. 그래서 따로 별칭을 부여해줘야 함
+SELECT *
+FROM (SELECT dept_no, avg(salary) AS avg_salary 
+		FROM dept_emp de 
+		JOIN salaries s ON de.emp_no = s.emp_no
+		GROUP BY dept_no) t
+WHERE avg_salary >= 70000;
+
+
+SELECT *
+FROM (SELECT emp_no, avg(salary) AS avg_salary 
+		FROM salaries s
+		GROUP BY emp_no) c
+WHERE avg_salary >= 80000;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

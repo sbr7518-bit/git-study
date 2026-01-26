@@ -1,7 +1,7 @@
 {
 	"folders": {},
 	"connections": {
-		"mysql8-19be3364c1d-6d161cee177c1a60": {
+		"mysql8-19be336ad5d-44ec5041c9535462": {
 			"provider": "mysql",
 			"driver": "mysql8",
 			"name": "localhost",
@@ -14,10 +14,19 @@
 				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
 				"type": "dev",
 				"closeIdleConnection": true,
+				"properties": {
+					"connectTimeout": "20000",
+					"rewriteBatchedStatements": "true",
+					"enabledTLSProtocols": "TLSv1,TLSv1.1,TLSv1.2,TLSv1.3",
+					"allowPublicKeyRetrieval": "TRUE"
+				},
 				"provider-properties": {
 					"@dbeaver-show-all-dbs@": "true"
 				},
 				"auth-model": "native"
+			},
+			"custom-properties": {
+				"valueManager.employees.member_notnull:id": "plaintext"
 			}
 		}
 	},

@@ -11,12 +11,15 @@
 	</section>
 	<section name="DBeaver.QM.LogViewer">
 		<item key="column-result" value="208"/>
+		<item key="column-time" value="123"/>
+		<item key="column-text" value="326"/>
+		<item key="column-rows" value="109"/>
 	</section>
 	<section name="DBeaver.TransactionLogDialog">
-		<item key="DIALOG_X_ORIGIN" value="75"/>
-		<item key="DIALOG_Y_ORIGIN" value="521"/>
-		<item key="DIALOG_WIDTH" value="1074"/>
-		<item key="DIALOG_HEIGHT" value="282"/>
+		<item key="DIALOG_X_ORIGIN" value="224"/>
+		<item key="DIALOG_Y_ORIGIN" value="362"/>
+		<item key="DIALOG_WIDTH" value="1113"/>
+		<item key="DIALOG_HEIGHT" value="501"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 	<section name="ResultSetViewer">
@@ -24,14 +27,14 @@
 			<section name="spreadsheet">
 				<item key="enabledPanelIds" value="value-view"/>
 				<item key="activePanelId" value="value-view"/>
-				<item key="panelRatio" value="300"/>
-				<item key="panelsVisible" value="true"/>
+				<item key="panelRatio" value="133"/>
+				<item key="panelsVisible" value="false"/>
 				<item key="verticalLayout" value="false"/>
 			</section>
 			<section name="plaintext">
 				<item key="enabledPanelIds" value="value-view"/>
 				<item key="activePanelId" value="value-view"/>
-				<item key="panelRatio" value="0"/>
+				<item key="panelRatio" value="300"/>
 				<item key="panelsVisible" value="true"/>
 				<item key="verticalLayout" value="false"/>
 			</section>
@@ -57,5 +60,17 @@
 		<item key="DIALOG_WIDTH" value="326"/>
 		<item key="DIALOG_HEIGHT" value="161"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+	</section>
+	<section name="DBeaver.ShowTipOfTheDayDialog">
+		<item key="DIALOG_X_ORIGIN" value="468"/>
+		<item key="DIALOG_Y_ORIGIN" value="8"/>
+		<item key="DIALOG_WIDTH" value="326"/>
+		<item key="DIALOG_HEIGHT" value="831"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+	</section>
+	<section name="DBeaver.StandardErrorDialog">
+		<item key="showDetails" value="false"/>
+		<item key="DIALOG_X_ORIGIN" value="355"/>
+		<item key="DIALOG_Y_ORIGIN" value="421"/>
 	</section>
 </section>
