@@ -47,4 +47,10 @@
 		> S : 소수점 기준 자릿수
 	- DATE : 날짜 (YYYY-MM-DD)
 	- DATETIME : 날짜 + 시간 (YYYY-MM-DD HH:MM:SS)
+	
+	CREATE TABLE position (
+	id int PRIMARY KEY AUTO_INCREMENT,
+	position_name varchar(50)
+);
+
 

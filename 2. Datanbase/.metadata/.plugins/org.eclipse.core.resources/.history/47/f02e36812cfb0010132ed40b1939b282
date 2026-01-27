@@ -325,7 +325,6 @@ SELECT  hire_date, count(*) FROM employees
 GROUP BY hire_date;
 
 Q16. 성별별 사원 수 중 100000명 이상인 경우만 조회하세요.
-
 SELECT count(*), gender FROM employees
 GROUP BY gender
 HAVING count(*) >= 100000;
