@@ -66,18 +66,14 @@ public class Ex03_if문제 {
 //		 - 18세 이하 : 5,000원
 //		 - 19세 이상 : 10,000원
 
-		int age1 = 12;
-		int age2 = 18;
-		int age3 = 19;
-
 		System.out.print("입력하세요 : ");
-		int c = sc.nextInt();
+		int age1 = sc.nextInt();
 		
-		if (c <= age1)  {
+		if (age1 >= 0 && age1 <= 12 )  {
 			System.out.println("3,000원");
-		} else if (c <= age2){
+		} else if (age1 > 12 && age1 <= 18 ){
 			System.out.println("5,000");
-		} else if (c >= age3) {
+		} else if (age1 >= 19 ) {
 			System.out.println("10,000");
 		} 
 		

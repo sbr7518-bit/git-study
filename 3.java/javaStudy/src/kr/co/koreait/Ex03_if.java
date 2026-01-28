@@ -49,8 +49,7 @@ public class Ex03_if {
 				System.out.println("위의 조건식이 모두 거짓입니다!");
 			}
 		
-		
-		
+
 		
 		
 		
