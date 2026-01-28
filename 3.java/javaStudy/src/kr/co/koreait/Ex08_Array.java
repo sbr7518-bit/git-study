@@ -29,7 +29,7 @@ public class Ex08_Array {
 		System.out.println("1번 인덱스 조회 : " + arr[1]);
 		System.out.println("2번 인덱스 조회 : " + arr[2]);
 		System.out.println("3번 인덱스 조회 : " + arr[3]);
-		
+//		ㅁㄴㅇㅁㄴㅇ
 		
 //	 	for-etch 문 (향상된 for문)
 		
