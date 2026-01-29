@@ -91,7 +91,7 @@ public class Ex08_Array {
 		 System.out.println("가장 작은 값 : " + min);
 		 System.out.println("가장 큰 값 : " + max);
 		
-		 System.out.println("========================");
+		 System.out.println("======Arrays.--()==========");
 //		================================================ 
 //		Arrays.toSring()
 //		 - 반복문 없이 배열의 값들을 문자열 형태로 출력해주는 메서드
@@ -107,11 +107,12 @@ public class Ex08_Array {
 		 Integer[] numbers3 = {4, 2, 3, 1, 7, 5}; // Integer : int(기본형)를 참조형 변환
 		 Arrays.sort(numbers3, Comparator.reverseOrder()); 
 		 // Comparator.reverseOrder() : 내림차순 정렬
+		 
 		 System.out.println(Arrays.toString(numbers3));
 		 
 //		 모든 결과가 양수로 나올 때가지 반복하며 계속 돌린다.
 		 
-		 System.out.println("==============================");
+		 System.out.println("==========얕은 복사==============");
 		 
 //		 ----------------------------------------------------
 //		 얕은 복사
@@ -126,7 +127,7 @@ public class Ex08_Array {
 		 System.out.println(Arrays.toString(arrCopy1));
 		 System.out.println(Arrays.toString(shallowCopy));
 		 
-		 System.out.println("==============================");
+		 System.out.println("==========깊은 복사=============");
 		 
 //		 ----------------------------------------------------
 //		 깊은 복사
@@ -147,10 +148,7 @@ public class Ex08_Array {
 		 int[] arrCopy2 = {1, 2, 3};
 		 int[] deepCopy =Arrays.copyOf(arrCopy2, arrCopy2.length);
 //		                              (   원본  ,    복사할 길이);
-		 
-		 
-		 
-		 
+
 		 
 		 
 		 

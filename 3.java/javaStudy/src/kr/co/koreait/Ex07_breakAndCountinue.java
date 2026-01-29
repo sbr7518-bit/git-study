@@ -54,7 +54,6 @@ public class Ex07_breakAndCountinue {
 			System.out.println("숫자를 입력하세요 : ");
 			int guess = sc.nextInt();                                                                                                                                                                                                                                                                                                                                        
 			
-			
 			if (guess == magicNumber) {
 				System.out.println(i + "번째에 맞추셨습니다!");
 				isMath = true;

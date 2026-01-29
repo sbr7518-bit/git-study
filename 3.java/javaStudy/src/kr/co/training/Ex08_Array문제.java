@@ -2,9 +2,10 @@ package kr.co.training;
 
 import java.util.Scanner;
 
-public class Ex08_Array {
+public class Ex08_Array문제 {
 
 	public static void main(String[] args) {
+		
 
 //		1. 5만큼의 길이를 가진 배열 arrString을 생성하세요.
 //		2. 위에서 생성한 배열을 아래의 값으로 초기화 하세요.
@@ -58,49 +59,6 @@ public class Ex08_Array {
 			
 			System.out.println("합계 : " + sum);
 			System.out.println("평균 : " + sum / scores.length);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		
