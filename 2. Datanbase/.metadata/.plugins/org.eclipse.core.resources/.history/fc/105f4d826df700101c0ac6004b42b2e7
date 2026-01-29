@@ -1,4 +1,0 @@
-
--- AS 일회성 컬럼명 변경 가능
-
-SELECT emp_no AS '사번', salary * 12 AS '월급' FROM salaries s ;
