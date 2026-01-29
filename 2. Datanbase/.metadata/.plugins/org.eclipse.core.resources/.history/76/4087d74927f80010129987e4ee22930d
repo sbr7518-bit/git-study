@@ -1,0 +1,8 @@
+
+------- INNER JOIN -----------
+
+-- 사번, 이름, 연봉 조회  ex> 테이블 별칭 : - e, - s.
+SELECT e.emp_no, e.first_name , s.salary 
+FROM employees e
+JOIN salaries s
+ON e.emp_no = s.emp_no ;

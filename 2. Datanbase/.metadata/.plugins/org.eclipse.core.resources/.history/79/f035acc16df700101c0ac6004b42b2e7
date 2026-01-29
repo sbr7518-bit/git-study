@@ -1,0 +1,4 @@
+
+-- AS 일회성 컬럼명 변경 가능, '' 없어도 상관없지만 글자 사이 띄어쓰기가 있다면 조회 안됨
+
+SELECT emp_no AS '사번', salary * 12 AS '월급' FROM salaries s ;
